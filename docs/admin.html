@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - TransEdu</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-[#003f87] text-white p-5 shadow-md flex justify-between items-center">
+
+        <h1 class="text-2xl font-bold">
+            Admin Panel
+        </h1>
+
+        <a href="dashboard.html" class="bg-white text-[#003f87] px-4 py-2 rounded-full font-semibold">
+            Dashboard
+        </a>
+
+    </header>
+
+    <main class="p-6">
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <div class="bg-white rounded-3xl p-6 shadow-lg">
+
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-[#003f87]">
+                        Total User
+                    </h2>
+
+                    <span class="material-symbols-outlined text-[#003f87] text-4xl">
+                        group
+                    </span>
+                </div>
+
+                <h3 class="text-4xl font-bold">
+                    294
+                </h3>
+
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 shadow-lg">
+
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-[#003f87]">
+                        Total Saldo
+                    </h2>
+
+                    <span class="material-symbols-outlined text-[#003f87] text-4xl">
+                        account_balance_wallet
+                    </span>
+                </div>
+
+                <h3 class="text-3xl font-bold">
+                    Rp 24 JT
+                </h3>
+
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 shadow-lg">
+
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-[#003f87]">
+                        Transport Aktif
+                    </h2>
+
+                    <span class="material-symbols-outlined text-[#003f87] text-4xl">
+                        directions_bus
+                    </span>
+                </div>
+
+                <h3 class="text-4xl font-bold">
+                    18
+                </h3>
+
+            </div>
+
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-lg p-6 mt-8">
+
+            <h2 class="text-2xl font-bold text-[#003f87] mb-6">
+                Data Pengguna
+            </h2>
+
+            <div class="overflow-x-auto">
+
+                <table class="w-full">
+
+                    <thead>
+                        <tr class="border-b">
+                            <th class="text-left py-3">Nama</th>
+                            <th class="text-left py-3">ID</th>
+                            <th class="text-left py-3">Status</th>
+                            <th class="text-left py-3">Saldo</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-4">Ahmad Fauzi</td>
+                            <td>29402</td>
+                            <td>
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                                    Active
+                                </span>
+                            </td>
+                            <td>Rp 150.000</td>
+                        </tr>
+
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="py-4">Rina Putri</td>
+                            <td>29403</td>
+                            <td>
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
+                                    Active
+                                </span>
+                            </td>
+                            <td>Rp 200.000</td>
+                        </tr>
+
+                        <tr class="hover:bg-gray-50">
+                            <td class="py-4">Budi Santoso</td>
+                            <td>29404</td>
+                            <td>
+                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">
+                                    Nonaktif
+                                </span>
+                            </td>
+                            <td>Rp 0</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

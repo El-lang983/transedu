@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up Saldo - TransEdu</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="bg-[#003f87] text-white p-5 flex justify-between items-center shadow-md">
+
+        <h1 class="text-2xl font-bold">
+            Top Up Saldo
+        </h1>
+
+        <a href="dashboard.html" class="bg-white text-[#003f87] px-4 py-2 rounded-full font-semibold">
+            Dashboard
+        </a>
+
+    </header>
+
+    <main class="p-6 max-w-xl mx-auto">
+
+        <div class="bg-white rounded-3xl shadow-lg p-8">
+
+            <h2 class="text-3xl font-bold text-[#003f87] mb-2">
+                Isi Saldo
+            </h2>
+
+            <p class="text-gray-500 mb-6">
+                Pilih nominal top up saldo subsidi.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+
+                <button onclick="setNominal(10000)"
+                    class="bg-blue-50 hover:bg-blue-100 p-4 rounded-2xl font-semibold transition">
+                    Rp 10.000
+                </button>
+
+                <button onclick="setNominal(25000)"
+                    class="bg-blue-50 hover:bg-blue-100 p-4 rounded-2xl font-semibold transition">
+                    Rp 25.000
+                </button>
+
+                <button onclick="setNominal(50000)"
+                    class="bg-blue-50 hover:bg-blue-100 p-4 rounded-2xl font-semibold transition">
+                    Rp 50.000
+                </button>
+
+                <button onclick="setNominal(100000)"
+                    class="bg-blue-50 hover:bg-blue-100 p-4 rounded-2xl font-semibold transition">
+                    Rp 100.000
+                </button>
+
+            </div>
+
+            <input id="nominalInput" type="number" placeholder="Masukkan nominal"
+                class="w-full border-2 border-gray-200 rounded-2xl p-4 mb-6 outline-none focus:border-[#003f87]">
+
+            <button onclick="topupSaldo()"
+                class="w-full bg-[#003f87] hover:bg-[#0056b3] text-white py-4 rounded-2xl font-bold text-lg transition">
+                Konfirmasi Top Up
+            </button>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        function setNominal(value) {
+            document.getElementById('nominalInput').value = value;
+        }
+
+        function topupSaldo() {
+
+            const nominal = document.getElementById('nominalInput').value;
+
+            if (nominal == '' || nominal <= 0) {
+                alert('Masukkan nominal top up');
+                return;
+            }
+
+            let saldo = localStorage.getItem('saldo');
+
+            if (!saldo) {
+                saldo = 150000;
+            }
+
+            saldo = parseInt(saldo) + parseInt(nominal);
+
+            localStorage.setItem('saldo', saldo);
+
+            alert('Top Up berhasil!');
+
+            window.location.href = 'dashboard.html';
+
+        }
+
+    </script>
+
+</body>
+
+</html>

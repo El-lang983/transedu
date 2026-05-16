@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TransEdu - Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#003f87",
+                        secondary: "#0056b3",
+                        bg: "#f4f7ff",
+                        card: "#ffffff",
+                        text: "#191c21",
+                        muted: "#6b7280"
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7ff;
+        }
+
+        .fade-in {
+            animation: fade .5s ease;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="text-text fade-in">
+
+    <!-- HEADER -->
+    <header class="bg-primary text-white sticky top-0 z-50 shadow-md">
+        <div class="flex items-center justify-between px-5 h-16">
+
+            <div class="flex items-center gap-3">
+                <button id="menuBtn" class="md:hidden">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+
+                <h1 class="text-2xl font-bold">
+                    TransEdu
+                </h1>
+            </div>
+
+            <a href="profile.html">
+                <img id="dashboardProfile" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    class="w-10 h-10 rounded-full border-2 border-white object-cover">
+            </a>
+
+        </div>
+    </header>
+
+    <div class="flex">
+
+        <!-- SIDEBAR -->
+        <aside id="sidebar"
+            class="fixed md:static left-0 top-16 bg-white w-72 h-[calc(100vh-64px)] shadow-lg md:shadow-none z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+
+            <div class="p-5 border-b">
+
+                <div class="flex items-center gap-3">
+                    <img id="sidebarProfile" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                        class="w-14 h-14 rounded-full object-cover">
+
+                    <div>
+                        <h2 class="font-bold text-primary">
+                            TransEdu Student
+                        </h2>
+
+                        <p class="text-sm text-muted">
+                            Subsidy Active
+                        </p>
+
+                        <p class="text-xs text-gray-400">
+                            ID : 29402
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <nav class="p-3">
+
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 bg-blue-100 text-primary px-4 py-3 rounded-xl font-semibold mb-2">
+
+                    <span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+
+                <a href="reports.html"
+                    class="flex items-center gap-3 hover:bg-gray-100 px-4 py-3 rounded-xl transition mb-2">
+
+                    <span class="material-symbols-outlined">analytics</span>
+                    Reports
+                </a>
+
+                <a href="qr.html"
+                    class="flex items-center gap-3 hover:bg-gray-100 px-4 py-3 rounded-xl transition mb-2">
+
+                    <span class="material-symbols-outlined">qr_code_scanner</span>
+                    QR Scanner
+                </a>
+
+                <a href="History.html"
+                    class="flex items-center gap-3 hover:bg-gray-100 px-4 py-3 rounded-xl transition mb-2">
+
+                    <span class="material-symbols-outlined">history</span>
+                    History
+                </a>
+
+                <a href="profile.html"
+                    class="flex items-center gap-3 hover:bg-gray-100 px-4 py-3 rounded-xl transition">
+
+                    <span class="material-symbols-outlined">person</span>
+                    Profile
+                </a>
+
+                <a href="admin.html" class="flex items-center gap-3 hover:bg-gray-100 px-4 py-3 rounded-xl transition">
+
+                    <span class="material-symbols-outlined">
+                        admin_panel_settings
+                    </span>
+
+                    Admin
+                </a>
+
+                <button onclick="logout()"
+                    class="w-full flex items-center gap-3 hover:bg-red-50 text-red-600 px-4 py-3 rounded-xl transition mt-4">
+
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+
+                    Logout
+                </button>
+
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="flex-1 p-5 md:p-8 md:ml-0">
+
+            <!-- HEADER TEXT -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-primary">
+                    Selamat Pagi 👋
+                </h2>
+
+                <p class="text-muted mt-1">
+                    Berikut ringkasan aktivitas transportasimu.
+                </p>
+            </div>
+
+            <!-- GRID -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <!-- SALDO -->
+                <div
+                    class="lg:col-span-2 bg-gradient-to-r from-primary to-secondary text-white rounded-3xl p-6 shadow-xl relative overflow-hidden hover:scale-[1.01] transition">
+
+                    <div class="absolute -top-10 -right-10 w-52 h-52 bg-white/10 rounded-full"></div>
+
+                    <div class="relative z-10">
+
+                        <div class="flex justify-between items-start">
+
+                            <div>
+                                <p class="uppercase text-sm tracking-widest text-white/70">
+                                    Saldo Subsidi
+                                </p>
+
+                                <h3 id="saldoText" class="font-display-lg text-display-lg text-on-primary mb-2">
+                                    Rp 150.000
+                                </h3>
+                            </div>
+
+                            <div class="bg-white/20 p-3 rounded-2xl">
+                                <span class="material-symbols-outlined text-3xl">
+                                    account_balance_wallet
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="flex gap-8 mt-8">
+
+                            <div>
+                                <p class="text-white/70 text-sm">
+                                    Perjalanan
+                                </p>
+
+                                <h4 class="font-bold text-2xl">
+                                    54x
+                                </h4>
+                            </div>
+
+                            <div>
+                                <p class="text-white/70 text-sm">
+                                    Bulan Ini
+                                </p>
+
+                                <h4 class="font-bold text-2xl">
+                                    Rp 420K
+                                </h4>
+                            </div>
+
+                        </div>
+
+                        <div class="flex gap-3 mt-8">
+
+                            <a href="topup.html"
+                                class="bg-on-primary text-primary font-label-md text-label-md py-2 px-4 rounded-full hover:bg-surface-container-low transition-colors shadow-sm flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[18px]">add</span>
+                                Top Up
+                            </a>
+
+                            <a href="reports.html"
+                                class="bg-white/20 border border-white/20 px-5 py-3 rounded-full hover:bg-white/30 transition">
+
+                                Riwayat
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- QR -->
+                <div
+                    class="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition flex flex-col items-center justify-center text-center">
+
+                    <div class="bg-blue-100 p-5 rounded-full mb-4">
+
+                        <span class="material-symbols-outlined text-primary text-6xl">
+                            qr_code_scanner
+                        </span>
+
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-primary">
+                        Scan & Naik
+                    </h3>
+
+                    <p class="text-muted mt-2">
+                        Gunakan QR untuk validasi perjalanan.
+                    </p>
+
+                    <a href="qr.html"
+                        class="mt-5 bg-primary text-white px-6 py-3 rounded-full hover:bg-secondary transition">
+
+                        Buka QR
+                    </a>
+
+                </div>
+
+                <!-- STATISTIK -->
+                <div class="lg:col-span-3 bg-white rounded-3xl p-6 shadow-lg">
+
+                    <div class="flex justify-between items-center mb-8">
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-primary">
+                                Penggunaan Minggu Ini
+                            </h3>
+
+                            <p class="text-muted">
+                                Total 12 perjalanan
+                            </p>
+                        </div>
+
+                        <button class="hover:bg-gray-100 p-2 rounded-full">
+                            <span class="material-symbols-outlined">
+                                more_horiz
+                            </span>
+                        </button>
+
+                    </div>
+
+                    <div class="flex items-end justify-between h-56 gap-3">
+
+                        <div class="flex flex-col items-center w-full">
+                            <div class="bg-primary w-full h-[40%] rounded-t-xl"></div>
+                            <span class="mt-2 text-sm">Sen</span>
+                        </div>
+
+                        <div class="flex flex-col items-center w-full">
+                            <div class="bg-primary w-full h-[65%] rounded-t-xl"></div>
+                            <span class="mt-2 text-sm">Sel</span>
+                        </div>
+
+                        <div class="flex flex-col items-center w-full">
+                            <div class="bg-blue-300 w-full h-[25%] rounded-t-xl"></div>
+                            <span class="mt-2 text-sm">Rab</span>
+                        </div>
+
+                        <div class="flex flex-col items-center w-full">
+                            <div class="bg-primary w-full h-[85%] rounded-t-xl"></div>
+                            <span class="mt-2 text-sm">Kam</span>
+                        </div>
+
+                        <div class="flex flex-col items-center w-full">
+                            <div class="bg-primary w-full h-[45%] rounded-t-xl"></div>
+                            <span class="mt-2 text-sm">Jum</span>
+                        </div>
+
+                        <div class="flex flex-col items-center w-full">
+                            <div class="bg-gray-200 w-full h-[10%] rounded-t-xl"></div>
+                            <span class="mt-2 text-sm">Sab</span>
+                        </div>
+
+                        <div class="flex flex-col items-center w-full">
+                            <div class="bg-gray-200 w-full h-[5%] rounded-t-xl"></div>
+                            <span class="mt-2 text-sm">Min</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- AKTIVITAS -->
+                <div class="lg:col-span-3 bg-white rounded-3xl p-6 shadow-lg">
+
+                    <h3 class="text-2xl font-bold text-primary mb-6">
+                        Aktivitas Terakhir
+                    </h3>
+
+                    <div class="space-y-4">
+
+                        <div class="flex items-center justify-between hover:bg-gray-50 p-4 rounded-2xl transition">
+
+                            <div class="flex items-center gap-4">
+
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <span class="material-symbols-outlined text-primary">
+                                        directions_bus
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-semibold">
+                                        TransJakarta Koridor 1
+                                    </h4>
+
+                                    <p class="text-sm text-muted">
+                                        Hari ini, 07:15 WIB
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">
+                                Subsidi
+                            </span>
+
+                        </div>
+
+                        <div class="flex items-center justify-between hover:bg-gray-50 p-4 rounded-2xl transition">
+
+                            <div class="flex items-center gap-4">
+
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <span class="material-symbols-outlined text-primary">
+                                        train
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <h4 class="font-semibold">
+                                        MRT Jakarta
+                                    </h4>
+
+                                    <p class="text-sm text-muted">
+                                        Kemarin, 16:30 WIB
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <span class="bg-gray-100 px-3 py-1 rounded-full text-sm">
+                                Subsidi
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="mt-10 text-center text-sm text-muted">
+                © 2026 TransEdu • Smart Transportation System
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- MOBILE NAV -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around py-3 shadow-2xl z-50">
+
+        <a href="dashboard.html" class="flex flex-col items-center text-primary">
+
+            <span class="material-symbols-outlined">
+                home
+            </span>
+
+            <span class="text-xs">
+                Home
+            </span>
+
+        </a>
+
+        <a href="reports.html" class="flex flex-col items-center text-gray-500">
+
+            <span class="material-symbols-outlined">
+                analytics
+            </span>
+
+            <span class="text-xs">
+                Reports
+            </span>
+
+        </a>
+
+        <a href="qr.html" class="flex flex-col items-center text-gray-500">
+
+            <span class="material-symbols-outlined">
+                qr_code_scanner
+            </span>
+
+            <span class="text-xs">
+                QR
+            </span>
+
+        </a>
+
+        <a href="profile.html" class="flex flex-col items-center text-gray-500">
+
+            <span class="material-symbols-outlined">
+                person
+            </span>
+
+            <span class="text-xs">
+                Profile
+            </span>
+
+        </a>
+
+    </nav>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("-translate-x-full");
+        });
+    </script>
+
+    <script>
+
+        const savedImage = localStorage.getItem("profileImage");
+
+        if (savedImage) {
+
+            document.getElementById("dashboardProfile").src = savedImage;
+
+            document.getElementById("sidebarProfile").src = savedImage;
+
+        }
+
+        let saldo = localStorage.getItem('saldo');
+
+        if (!saldo) {
+            saldo = 150000;
+            localStorage.setItem('saldo', saldo);
+        }
+
+        saldo = Number(saldo).toLocaleString('id-ID');
+
+        document.getElementById('saldoText').innerText = 'Rp ' + saldo;
+
+    </script>
+    <script>
+
+        function logout() {
+
+            alert("Berhasil logout!");
+
+            window.location.href = "index.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
