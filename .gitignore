@@ -1,24 +1,45 @@
+# Log & cache
 *.log
+.phpunit.result.cache
+.phpactor.json
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# IDE/editor
+/.idea
+/.vscode
+/.fleet
+/.nova
+/.zed
+
+# Auth & env
+auth.json
 .env
 .env.backup
 .env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
-/.idea
-/.nova
-/.phpunit.cache
-/.vscode
-/.zed
-/auth.json
+
+# Node & vendor
 /node_modules
+/vendor
+
+# Laravel build
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+
+# Homestead & Vagrant
 Homestead.json
 Homestead.yaml
-Thumbs.db
+/.vagrant
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public_html/storage
+public_html/hot
